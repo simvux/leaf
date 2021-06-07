@@ -1,0 +1,20 @@
+[package]
+name = "lumina-compiler"
+version = "0.1.0"
+authors = ["Simon <simon.larsson-general@protonmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lumina-env = { path = "../lumina-env" }
+lumina-util = { path = "../lumina-util" }
+lumina-parser = { path = "../lumina-parser" }
+lumina-patterns = { path = "../lumina-patterns" }
+lumina-typesystem = { path = "../lumina-typesystem" }
+colored = "*"
+itertools = "*"
+indexmap = "*"
+take_mut = "*"
+once_cell = "*"
+smallvec = "*"

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "lumina",
+    "lumina-tokenizer",
+    "lumina-parser",
+    "lumina-util",
+    "lumina-env",
+    "lumina-compiler",
+]

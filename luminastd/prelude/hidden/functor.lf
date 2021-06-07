@@ -1,0 +1,2 @@
+trait Functor
+  fn map ((a -> b), self a -> self b)

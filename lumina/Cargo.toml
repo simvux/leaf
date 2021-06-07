@@ -1,0 +1,14 @@
+[package]
+name = "lumina"
+version = "0.1.0"
+authors = ["Simon <simon.larsson-general@protonmail.com>"]
+edition = "2018"
+
+[dependencies]
+lumina-env = { path = "../lumina-env" }
+lumina-util = { path = "../lumina-util" }
+lumina-compiler = { path = "../lumina-compiler" }
+lumina-typesystem = { path = "../lumina-typesystem" }
+colored = "*"
+take_mut = "*"
+itertools = "*"

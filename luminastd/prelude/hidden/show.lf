@@ -1,0 +1,2 @@
+trait Show
+  fn show (self, string -> string)

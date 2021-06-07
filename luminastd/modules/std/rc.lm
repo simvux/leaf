@@ -1,0 +1,8 @@
+trait Clone
+    fn clone (self -> self)
+
+trait Drop
+    fn drop (self -> nothing)
+
+fn test-func x (int -> int)
+    x

@@ -1,0 +1,11 @@
+use functor [Functor]
+
+enum result a
+  Ok a
+  None
+
+impl Functor for result a
+  fn map f res ((a -> b), result a -> result b)
+    match res
+      Ok v -> Ok f.v
+      None -> None

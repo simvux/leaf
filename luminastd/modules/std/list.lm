@@ -1,0 +1,13 @@
+struct vec a
+
+/*
+fn foldr f v list (
+    (a, b -> b), b, [a] -> b
+)
+  match list
+    []      -> v,
+    [x::xs] -> foldr #f (f x) xs,
+
+fn concat list ([[a]] -> [a])
+    foldr #(<>) [] list
+*/

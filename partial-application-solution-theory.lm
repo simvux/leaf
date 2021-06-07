@@ -1,0 +1,87 @@
+// CURRYING SOLUTION
+// HIR LIFTED
+fn main
+  run 2 3
+
+fn run x y
+  map #(curryadd y) []
+
+fn curryadd y (int, -> (int -> int))
+  {{y}, &add}
+
+fn map f list (
+    (a -> b), [a] -> [b]
+)
+  match list
+    []      -> []
+    [x::xs] -> f x :: map #f xs
+
+// MIR DEGENERICIFIED
+fn run x y
+  map #(curryadd y) []
+
+fn curryadd y (int, -> {{int}, (int, int -> int)})
+  {{y}, &add}
+
+fn map {cap, f} list (
+  {{int}, (int, int -> int)}, vecdeque int -> vecdeque int
+)
+    // (match expressions won't actually exist in the MIR)
+  match list
+    []      -> []
+    [x::xs] -> f 0.cap x :: map {cap, &f} xs
+
+
+// BETTER RUST-LIKE VERSION THAT I'M GONNA GO WITH
+
+fn run x y (int, int -> int)
+ apply #(fst x) y
+
+fn apply f x ((a -> b), a -> b)
+  apply0 #f x
+
+fn apply0 f x ((b -> a), b -> a) f
+
+fn fst x y (a, b -> a)
+ x
+
+// -- becomes -- //
+
+fn run x y (int, int -> int)
+ apply {A . x x} y
+
+fn apply f x (A, int -> int)
+ apply0 f x
+
+fn apply0 f x (A, int -> int)
+ Closure:call f
+
+trait Closure p r
+  fn call (self, p -> r)
+
+struct A
+  inner {int}
+
+impl Closure {int} int for A
+  fn call p r (self, {int} -> int)
+    fst 0.inner.self 0.p
+
+fn fst x y (int, int -> int)
+ x
+
+
+/// Returning functions
+// this has to work a bit differently
+
+fn different f ((int -> int)) #(\n -> n)
+
+// -- becomes -- //
+
+fn different f (auto_gen_type_0) #(\n -> n)
+
+type auto_gen_type_0
+  captures {}
+
+impl Closure {a} b for auto_gen_type_0
+  fn run cap n (self, a -> b)
+    n

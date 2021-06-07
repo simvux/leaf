@@ -1,0 +1,20 @@
+// These will be remade to not use bridge as much when we have a proper type system
+operator < (a a -> bool)
+  builtin:lt left right
+operator > (a a -> bool)
+  builtin:lt right left
+operator == (a a -> bool)
+  builtin:eq left right
+// To make `(4 == 2) && (3 == 1)` not require parenthesis 
+// We'd need to either change the operator rules or make these builtin
+// If we make them builtin we can rename them to `and / or` which i sorta prefer
+
+operator && (bool bool -> bool)
+  if left
+    then right
+    else false
+
+operator || (bool bool -> bool)
+  if left
+    then true
+    else right

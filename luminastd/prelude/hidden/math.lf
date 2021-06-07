@@ -1,0 +1,11 @@
+operator + (int int -> int)
+    builtin:add left right
+
+operator - (int int -> int)
+    builtin:sub left right
+
+operator * (int int -> int)
+    builtin:mul left right
+
+operator / (int int -> int)
+    builtin:div left right

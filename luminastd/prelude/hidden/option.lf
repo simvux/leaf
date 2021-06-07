@@ -1,0 +1,11 @@
+use functor [Functor]
+
+enum option a
+  Just a
+  None
+
+impl Functor for option a
+  fn map f opt ((a -> b), option a -> option b)
+    match opt
+      Just v -> Just f.v
+      None   -> None

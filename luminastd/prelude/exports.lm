@@ -1,0 +1,1 @@
+fn prelude_call_test ( -> int) 20
